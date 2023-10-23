@@ -1,0 +1,81 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "download",
+      "type": "shell",
+      "command": "acc",
+      "args": [
+        "new",
+        "${input:contest}",
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/contest/"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "oj",
+      "args": [
+        "t",
+        "-c",
+        "\"python ${file}\"",
+        "-d",
+        "${fileDirname}/tests/",
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "submit",
+      "type": "shell",
+      "command": "acc",
+      "args": [
+        "s",
+        "${fileBasename}",
+        "--",
+        "-y",
+        "--guess-python-interpreter",
+        "pypy"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "dependsOn": [
+        "test"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "contest",
+      "description": "contest:",
+      "type": "promptString"
+    }
+  ]
+}
