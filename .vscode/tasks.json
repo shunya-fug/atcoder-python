@@ -4,7 +4,37 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "download",
+      "label": "ch main",
+      "type": "shell",
+      "command": "git",
+      "args": [
+        "checkout",
+        "main",
+      ],
+      "presentation": {
+        "reveal": "silent",
+        "focus": false,
+        "panel": "new",
+        "close": true
+      }
+    },
+    {
+      "label": "ch",
+      "type": "shell",
+      "command": "git",
+      "args": [
+        "checkout",
+        "${input:contest}",
+      ],
+      "presentation": {
+        "reveal": "silent",
+        "focus": false,
+        "panel": "new",
+        "close": true
+      }
+    },
+    {
+      "label": "download[hide]",
       "type": "shell",
       "command": "acc",
       "args": [
@@ -21,7 +51,41 @@
         "panel": "shared",
         "showReuseMessage": true,
         "clear": true
-      }
+      },
+      "dependsOn": [
+        "ch main"
+      ],
+      "hide": true
+    },
+    {
+      "label": "download",
+      "type": "shell",
+      "command": "git",
+      "args": [
+        "checkout",
+        "${input:contest}",
+        "&&",
+        "git",
+        "add",
+        ".",
+        "&&",
+        "git",
+        "commit",
+        "-m",
+        "\"✨：${input:contest}\"",
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/contest/${input:contest}/"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "focus": false,
+        "panel": "new",
+        "close": true
+      },
+      "dependsOn": [
+        "download[hide]",
+      ]
     },
     {
       "label": "test",
