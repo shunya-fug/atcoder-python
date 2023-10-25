@@ -34,6 +34,28 @@
       }
     },
     {
+      "label": "commit",
+      "type": "shell",
+      "command": "pipenv",
+      "args": [
+        "run",
+        "python",
+        "main.py",
+        "${file}"
+      ],
+      "options": {
+        "cwd": "/workspaces/atcoder-python/tools/commit"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
       "label": "download[hide]",
       "type": "shell",
       "command": "acc",
