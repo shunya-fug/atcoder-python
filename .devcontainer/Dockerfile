@@ -27,7 +27,7 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install --upgrade pip \
     && pip install -r /tmp/requirements.txt \
     && pip install git+https://github.com/not522/ac-library-python \
-    && pip install online-judge-tools
+    && pip install online-judge-tools pipenv
 RUN npm install -g atcoder-cli
 
 # atcoder-cli設定
