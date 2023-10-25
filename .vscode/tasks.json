@@ -63,6 +63,7 @@
       "command": "git",
       "args": [
         "checkout",
+        "-b",
         "${input:contest}",
         "&&",
         "git",
