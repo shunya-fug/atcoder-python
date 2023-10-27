@@ -156,6 +156,17 @@
         "showReuseMessage": true,
         "clear": true
       }
+    },
+    {
+      "label": "history",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "main.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/tools/history"
+      },
     }
   ],
   "inputs": [
